@@ -14,13 +14,13 @@ Chinese community edition of [agency-agents](https://github.com/msitarzewski/age
 
 | 🤖 AI 智能體 | 🌏 英文版翻譯 | 🇨🇳 中國市場原創 | 🧠 支援工具 |
 |:---:|:---:|:---:|:---:|
-| **149** | **127** | **22** | **10 種** |
+| **151** | **129** | **22** | **10 種** |
 
 ---
 
 ## 這是什麼？
 
-**149 個即插即用的 AI 專家人格**——每個都有獨特的專業技能、溝通風格和可落地的工作流，不是通用模板。
+**151 個即插即用的 AI 專家人格**——每個都有獨特的專業技能、溝通風格和可落地的工作流，不是通用模板。
 
 ---
 
@@ -94,6 +94,7 @@ cp -r marketing/*.md ~/.claude/agents/
 | [Git 工作流大師](engineering/engineering-git-workflow-master.md) | 分支策略、約定式提交、變基 | Git 工作流規範 |
 | [軟體架構師](engineering/engineering-software-architect.md) | 系統設計、DDD、架構決策 | 系統架構設計 |
 | [SRE](engineering/engineering-sre.md) | SLO、可觀測性、混沌工程 | 站點可靠性工程 |
+| [AI 資料修復工程師](engineering/engineering-ai-data-remediation-engineer.md) | 自愈管道、SLM 語義聚類、零資料丟失 | 大規模資料異常修復 |
 | [飛書整合開發工程師](engineering/engineering-feishu-integration-developer.md) ⭐ | 飛書機器人、審批流、多維表格 | 飛書生態整合開發 |
 
 ### 🎨 設計部
@@ -272,6 +273,7 @@ cp -r marketing/*.md ~/.claude/agents/
 | [MCP 構建器](specialized/specialized-mcp-builder.md) | MCP 伺服器、工具設計、API 整合 | MCP 開發、AI 工具擴充套件 |
 | [文件生成器](specialized/specialized-document-generator.md) | PDF/PPTX/DOCX/XLSX 生成 | 程式化文件建立 |
 | [工作流架構師](specialized/specialized-workflow-architect.md) | 工作流樹設計、交接契約、故障恢復 | 系統流程規格化 |
+| [自動化治理架構師](specialized/automation-governance-architect.md) | 自動化審計、n8n 工作流治理、風險評估 | 業務自動化決策 |
 | [醫療健康營銷合規師](specialized/healthcare-marketing-compliance.md) ⭐ | 醫療廣告法、NMPA、網際網路醫療 | 醫療健康營銷合規 |
 
 ### 🥽 空間計算部
