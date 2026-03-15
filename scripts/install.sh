@@ -60,7 +60,7 @@ check_integrations() {
 
 # --- 工具检测 ---
 detect_claude_code() { [[ -d "${HOME}/.claude" ]]; }
-detect_copilot()      { command -v code >/dev/null 2>&1 || [[ -d "${HOME}/.github" ]]; }
+detect_copilot()      { command -v code >/dev/null 2>&1 || [[ -d "${HOME}/.github" ]] || [[ -d "${HOME}/.copilot" ]]; }
 detect_antigravity()  { [[ -d "${HOME}/.gemini/antigravity/skills" ]]; }
 detect_gemini_cli()   { command -v gemini >/dev/null 2>&1 || [[ -d "${HOME}/.gemini" ]]; }
 detect_cursor()       { command -v cursor >/dev/null 2>&1 || [[ -d "${HOME}/.cursor" ]]; }
@@ -89,7 +89,7 @@ is_detected() {
 tool_label() {
   case "$1" in
     claude-code) printf "%-14s  %s" "Claude Code"  "(~/.claude/agents)"     ;;
-    copilot)     printf "%-14s  %s" "Copilot"      "(~/.github/agents)"     ;;
+    copilot)     printf "%-14s  %s" "Copilot"      "(~/.github + ~/.copilot)" ;;
     antigravity) printf "%-14s  %s" "Antigravity"  "(~/.gemini/antigravity)" ;;
     gemini-cli)  printf "%-14s  %s" "Gemini CLI"   "(gemini 扩展)"          ;;
     opencode)    printf "%-14s  %s" "OpenCode"     "(opencode.ai)"          ;;
@@ -122,9 +122,10 @@ install_claude_code() {
 }
 
 install_copilot() {
-  local dest="${HOME}/.github/agents"
+  local dest1="${HOME}/.github/agents"
+  local dest2="${HOME}/.copilot/agents"
   local count=0
-  mkdir -p "$dest"
+  mkdir -p "$dest1" "$dest2"
   local dir f first_line
   for dir in design engineering game-development marketing paid-media sales product project-management \
               testing support spatial-computing specialized; do
@@ -132,11 +133,12 @@ install_copilot() {
     while IFS= read -r -d '' f; do
       first_line="$(head -1 "$f")"
       [[ "$first_line" == "---" ]] || continue
-      cp "$f" "$dest/"
+      cp "$f" "$dest1/"
+      cp "$f" "$dest2/"
       (( count++ )) || true
     done < <(find "$REPO_ROOT/$dir" -name "*.md" -type f -print0)
   done
-  ok "Copilot: $count 个智能体 -> $dest"
+  ok "Copilot: $count 个智能体 -> $dest1 + $dest2"
 }
 
 install_antigravity() {
@@ -159,7 +161,9 @@ install_gemini_cli() {
   local src="$INTEGRATIONS/gemini-cli"
   local dest="${HOME}/.gemini/extensions/agency-agents"
   local count=0
-  [[ -d "$src" ]] || { err "integrations/gemini-cli 不存在。请先运行 convert.sh"; return 1; }
+  [[ -d "$src" ]] || { err "integrations/gemini-cli 不存在。请先运行 convert.sh --tool gemini-cli"; return 1; }
+  [[ -f "$src/gemini-extension.json" ]] || { err "gemini-extension.json 缺失。请先运行 convert.sh --tool gemini-cli"; return 1; }
+  [[ -d "$src/skills" ]] || { err "skills/ 目录缺失。请先运行 convert.sh --tool gemini-cli"; return 1; }
   mkdir -p "$dest/skills"
   cp "$src/gemini-extension.json" "$dest/gemini-extension.json"
   local d

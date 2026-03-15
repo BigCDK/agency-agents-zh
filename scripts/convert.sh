@@ -415,13 +415,6 @@ run_conversions() {
   echo "$count"
 }
 
-write_single_file_outputs() {
-  mkdir -p "$OUT_DIR/aider"
-  cp "$AIDER_TMP" "$OUT_DIR/aider/CONVENTIONS.md"
-
-  mkdir -p "$OUT_DIR/windsurf"
-  cp "$WINDSURF_TMP" "$OUT_DIR/windsurf/.windsurfrules"
-}
 
 # --- 入口 ---
 
@@ -479,9 +472,14 @@ HEREDOC
     info "已转换 $count 个智能体 ($t)"
   done
 
-  if [[ "$tool" == "all" || "$tool" == "aider" || "$tool" == "windsurf" ]]; then
-    write_single_file_outputs
+  if [[ "$tool" == "all" || "$tool" == "aider" ]]; then
+    mkdir -p "$OUT_DIR/aider"
+    cp "$AIDER_TMP" "$OUT_DIR/aider/CONVENTIONS.md"
     info "已写入 integrations/aider/CONVENTIONS.md"
+  fi
+  if [[ "$tool" == "all" || "$tool" == "windsurf" ]]; then
+    mkdir -p "$OUT_DIR/windsurf"
+    cp "$WINDSURF_TMP" "$OUT_DIR/windsurf/.windsurfrules"
     info "已写入 integrations/windsurf/.windsurfrules"
   fi
 

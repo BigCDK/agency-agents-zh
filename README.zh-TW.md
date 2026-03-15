@@ -14,13 +14,13 @@ Chinese community edition of [agency-agents](https://github.com/msitarzewski/age
 
 | 🤖 AI 智能體 | 🌏 英文版翻譯 | 🇨🇳 中國市場原創 | 🧠 支援工具 |
 |:---:|:---:|:---:|:---:|
-| **146** | **124** | **22** | **10 種** |
+| **149** | **127** | **22** | **10 種** |
 
 ---
 
 ## 這是什麼？
 
-**146 個即插即用的 AI 專家人格**——每個都有獨特的專業技能、溝通風格和可落地的工作流，不是通用模板。
+**149 個即插即用的 AI 專家人格**——每個都有獨特的專業技能、溝通風格和可落地的工作流，不是通用模板。
 
 ---
 
@@ -200,6 +200,7 @@ cp -r marketing/*.md ~/.claude/agents/
 | [趨勢研究員](product/product-trend-researcher.md) | 市場情報、競品分析 | 市場調研、機會評估 |
 | [反饋分析師](product/product-feedback-synthesizer.md) | 使用者反饋分析、洞察提取 | 反饋分析、產品優先順序 |
 | [行為助推引擎](product/product-behavioral-nudge-engine.md) | 行為心理學、使用者引導 | 使用者行為設計、轉化提升 |
+| [產品經理](product/product-manager.md) | 產品全生命週期、PRD、路線圖 | 產品策略與交付管理 |
 
 ### 📋 專案管理部
 
@@ -270,6 +271,7 @@ cp -r marketing/*.md ~/.claude/agents/
 | [企業培訓課程設計師](specialized/corporate-training-designer.md) ⭐ | ADDIE/SAM、企業學習平臺、TTT | 培訓體系搭建與課程開發 |
 | [MCP 構建器](specialized/specialized-mcp-builder.md) | MCP 伺服器、工具設計、API 整合 | MCP 開發、AI 工具擴充套件 |
 | [文件生成器](specialized/specialized-document-generator.md) | PDF/PPTX/DOCX/XLSX 生成 | 程式化文件建立 |
+| [工作流架構師](specialized/specialized-workflow-architect.md) | 工作流樹設計、交接契約、故障恢復 | 系統流程規格化 |
 | [醫療健康營銷合規師](specialized/healthcare-marketing-compliance.md) ⭐ | 醫療廣告法、NMPA、網際網路醫療 | 醫療健康營銷合規 |
 
 ### 🥽 空間計算部
@@ -317,6 +319,12 @@ cp -r marketing/*.md ~/.claude/agents/
 | [Unreal 技術美術](game-development/unreal-engine/unreal-technical-artist.md) | 材質、Niagara、渲染管線 | UE 畫面與效能 |
 | [Unreal 世界構建師](game-development/unreal-engine/unreal-world-builder.md) | 開放世界、地形、關卡串流 | UE 場景構建 |
 
+**Blender：**
+
+| 智能體 | 專長 | 適用場景 |
+|--------|------|----------|
+| [Blender 外掛工程師](game-development/blender/blender-addon-engineer.md) | Python 外掛、資源驗證、匯出自動化 | Blender 管線工具開發 |
+
 **Godot：**
 
 | 智能體 | 專長 | 適用場景 |
@@ -358,7 +366,7 @@ cp -r marketing/*.md ~/.claude/agents/
 | 工具 | 安裝位置 | 型別 |
 |------|----------|------|
 | **Claude Code** | `~/.claude/agents/` | 全域性，直接複製 |
-| **GitHub Copilot** | `~/.github/agents/` | 全域性，直接複製 |
+| **GitHub Copilot** | `~/.github/agents/` + `~/.copilot/agents/` | 全域性，直接複製 |
 | **OpenClaw** | `~/.openclaw/agency-agents/` | 全域性，需轉換 |
 | **Antigravity** | `~/.gemini/antigravity/skills/` | 全域性，需轉換 |
 | **Gemini CLI** | `~/.gemini/extensions/agency-agents/` | 全域性，需轉換 |
@@ -403,7 +411,7 @@ cp -r marketing/*.md ~/.claude/agents/
 <details>
 <summary><strong>GitHub Copilot</strong></summary>
 
-智能體直接從倉庫複製到 `~/.github/agents/`，無需轉換。
+智能體直接從倉庫複製到 `~/.github/agents/` 和 `~/.copilot/agents/`，無需轉換。
 
 ```bash
 ./scripts/install.sh --tool copilot
